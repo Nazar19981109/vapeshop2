@@ -9,7 +9,6 @@ import com.vapeshop.main.Repository.SlushRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-
 import java.util.List;
 
 @Component
@@ -24,15 +23,6 @@ public class PurchaseServiceImpl implements PurchaseService {
     @Autowired
     SlushRepository slushRepository;
 
-    @Override
-    public void create(Purchase purchase) {
-        purchaseRepository.save(purchase);
-    }
-
-    @Override
-    public void deleteById(Integer pid) {
-        purchaseRepository.deleteById(pid);
-    }
 
     @Override
     public void update(Purchase purchase, Integer pid) {
@@ -40,16 +30,6 @@ public class PurchaseServiceImpl implements PurchaseService {
         purchaseToUpdate.setTotalPrice(purchase.getTotalPrice());
         purchaseToUpdate.setAmountSlushes(purchase.getAmountSlushes());
         purchaseRepository.save(purchase);
-    }
-
-    @Override
-    public Purchase getById(Integer pid) {
-        return purchaseRepository.getOne(pid);
-    }
-
-    @Override
-    public List<Purchase> getAll() {
-       return purchaseRepository.findAll();
     }
 
     @Override

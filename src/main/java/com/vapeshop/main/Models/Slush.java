@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 
 @Entity
+
 public class Slush {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,13 +1,13 @@
 package com.vapeshop.main.Models;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.List;
 
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Purchase  {
 
     @Id
@@ -20,24 +20,9 @@ public class Purchase  {
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
     private Shop shop;
 
-    public Shop getShop() {
-        return shop;
-    }
-
-    public void setShop(Shop shop) {
-        this.shop = shop;
-    }
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, mappedBy = "purchase")
     private List<Slush> slushes;
-
-    public List<Slush> getSlushes() {
-        return slushes;
-    }
-
-    public void setSlushes(List<Slush> slushes) {
-        this.slushes = slushes;
-    }
 
 
     public Purchase() {
@@ -65,6 +50,22 @@ public class Purchase  {
 
     public void setAmountSlushes(Integer amountSlushes) {
         this.amountSlushes = amountSlushes;
+    }
+
+    public Shop getShop() {
+        return shop;
+    }
+
+    public void setShop(Shop shop) {
+        this.shop = shop;
+    }
+
+    public List<Slush> getSlushes() {
+        return slushes;
+    }
+
+    public void setSlushes(List<Slush> slushes) {
+        this.slushes = slushes;
     }
 
 
